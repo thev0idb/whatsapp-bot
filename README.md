@@ -16,6 +16,10 @@ pkg update && pkg upgrade -y
 pkg install nodejs ffmpeg git -y
 mkdir bot-wa
 cd bot-wa
+npm init -y
+npm set type=module
+npm install @whiskeysockets/baileys qrcode-terminal
+
 nano config.js
 ```
 * Ubah nilai `MAIN_OWNER` menjadi nomor WhatsApp kamu menggunakan format kode negara (contoh: `'628123456789'`).

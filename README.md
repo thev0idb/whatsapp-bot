@@ -16,6 +16,7 @@ pkg update && pkg upgrade -y
 pkg install nodejs ffmpeg git -y
 mkdir bot-wa
 cd bot-wa
+git clone https://github.com/thev0idb/whatsapp-bot
 npm init -y
 npm set type=module
 npm install @whiskeysockets/baileys qrcode-terminal

@@ -41,8 +41,8 @@ node index.js
 ubah baris kode ini menggunakan endpoint
 ```bash
 try {
-      const apiKey = '';
-      const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+      const apiKey = '';  <--- isi api key di sini
+      const response = await fetch('https://endpoint.example.com/openai/v1/chat/completions', {
         method: 'POST',
         headers: { 'Authorization': `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
         body: JSON.stringify({

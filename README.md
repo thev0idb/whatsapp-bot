@@ -23,7 +23,7 @@ npm install @whiskeysockets/baileys qrcode-terminal
 
 nano config.js
 ```
-* Ubah nilai `MAIN_OWNER` menjadi nomor WhatsApp kamu menggunakan format kode negara (contoh: `'628123456789'`).
+* Ubah nilai `MAIN_OWNER` di config.js menjadi nomor WhatsApp kamu menggunakan format kode negara (contoh: `'628123456789'`).
 * Tekan `Ctrl + O`, lalu `Enter` untuk menyimpan.
 * Tekan `Ctrl + X` untuk keluar dari editor.
 

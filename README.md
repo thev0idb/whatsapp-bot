@@ -36,9 +36,30 @@ Jalankan bot menggunakan perintah:
 ```bash
 node index.js
 ```
+
+### penggunaan API key untuk AI chat bot
+ubah baris kode ini menggunakan endpoint
+```bash
+try {
+      const apiKey = '';
+      const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model: 'openai/gpt-oss-20b',
+          messages: [{ 
+            role: 'user', 
+            content: query }]
+        })
+      });
+```
+
+
 > **Catatan:** QR Code akan muncul di terminal Termux. Buka WhatsApp di HP $\rightarrow$ **Perangkat Tertaut** $\rightarrow$ **Tautkan Perangkat**, lalu pindai QR Code tersebut.
 
 ---
+
+
 
 ## 2. Instalasi di Laptop / PC (Windows, Linux, macOS)
 
@@ -55,19 +76,17 @@ node index.js
 ### Langkah-langkah Instalasi:
 
 1. **Buka Terminal / Command Prompt / PowerShell**
-   Navigasikan terminal ke direktori tempat project bot disimpan:
    ```bash
    cd path/to/folder-bot
    ```
 
 2. **Konfigurasi File Owner**
-   Buka file `config.js` dengan editor teks favorit kamu (VS Code, Notepad, dll.), lalu perbarui nomor WhatsApp pada variabel `MAIN_OWNER`:
+   Buka file `config.js` lalu perbarui nomor WhatsApp pada variabel `MAIN_OWNER`:
    ```javascript
    MAIN_OWNER: '628123456789'
    ```
 
 3. **Install Package Dependencies**
-   Jalankan perintah berikut di terminal:
    ```bash
    npm install
    ```

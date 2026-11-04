@@ -21,16 +21,15 @@ npm init -y
 npm set type=module
 npm install @whiskeysockets/baileys qrcode-terminal
 
+### Install Node Modules
+```bash
+npm install
+```
 nano config.js
 ```
 * Ubah nilai `MAIN_OWNER` di config.js menjadi nomor WhatsApp kamu menggunakan format kode negara (contoh: `'628123456789'`).
 * Tekan `Ctrl + O`, lalu `Enter` untuk menyimpan.
 * Tekan `Ctrl + X` untuk keluar dari editor.
-
-### Install Node Modules
-```bash
-npm install
-```
 
 ### Jalankan Bot
 Jalankan bot menggunakan perintah:
@@ -43,7 +42,7 @@ ubah baris kode ini menggunakan endpoint
 ```bash
 try {
       const apiKey = '';  <--- isi api key di sini
-      const response = await fetch('https://endpoint.example.com/openai/v1/chat/completions', {
+      const response = await fetch('https://endpoint.example.com/openai/v1/chat/completions', { <--- ubah URL di sini dengan URL provider yang ingin kamu gunakan
         method: 'POST',
         headers: { 'Authorization': `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
         body: JSON.stringify({

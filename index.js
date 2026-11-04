@@ -20,16 +20,16 @@ function showTerminalUI() {
   console.log(banner);
   console.log(`\x1b[36m[>] Created By : nomane\x1b[0m`);
   console.log(`\x1b[36m[>] Version    : 1.2.1\x1b[0m\n`);
-  console.log(`\x1b[32m[+] Starting Bot Server...\x1b[0m`);
-  console.log(`\x1b[32m[+] Loading Configuration...\x1b[0m`);
+  console.log(`\x1b[32m[+] Bot Connected!\x1b[0m`);
+  console.log(`\x1b[32m[+] Waiting for User Interaction...\x1b[0m\n`);
 }
 
 async function startBot() {
-  showTerminalUI();
   await loadOwners();
   await loadBannedSticker();
 
-  const { state, saveCreds } = await useMultiFileAuthState(config.SESSION_FOLDER);
+  const { state, saveCreds } =
+  await useMultiFileAuthState(config.SESSION_FOLDER);
 
   const sock = makeWASocket.default({
     auth: state,
@@ -42,20 +42,21 @@ async function startBot() {
 
   sock.ev.on('connection.update', ({ connection, lastDisconnect, qr }) => {
     if (qr) {
-      console.log('\n\x1b[33m[!] Scan QR melalui WhatsApp > Perangkat tertaut:\x1b[0m\n');
+      console.clear();
+      console.log('\x1b[33m[!] Anda belum terhubung ke WhatsApp.\x1b[0m');
+      console.log('\x1b[33m[!] Silakan scan QR Code di bawah ini melalui WhatsApp > Perangkat Tertaut:\x1b[0m\n');
       qrcode.generate(qr, { small: true });
     }
 
     if (connection === 'open') {
       reconnecting = false;
-      console.log('\x1b[32m[+] Connected!\x1b[0m');
-      console.log('\x1b[32m[+] Waiting for User Interaction...\x1b[0m\n');
+      showTerminalUI();
     }
 
     if (connection === 'close') {
       const statusCode = lastDisconnect?.error?.output?.statusCode;
       if (statusCode === DisconnectReason.loggedOut) {
-        console.log('\x1b[31m[-] Sesi logout. Tautkan perangkat kembali untuk login.\x1b[0m');
+        console.log('\x1b[31m[-] Sesi logout. Silakan hapus folder session dan jalankan ulang bot untuk login kembali.\x1b[0m');
         return;
       }
       if (!reconnecting) {
